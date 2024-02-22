@@ -8,7 +8,7 @@
       </v-row>
       <v-row class="d-flex justify-center">
         <v-card width="600">
-          <v-form validate-on="submit lazy" @submit.prevent>
+          <v-form @submit.prevent ref="loginForm">
             <v-col cols="auto">
               <v-row md="6" class="d-flex justify-center">
                 <v-text-field
@@ -65,6 +65,10 @@ const email = ref('')
 const password = ref('')
 const message = ref('')
 const loading = ref(false)
+
+const form = {
+  robot: false
+}
 
 provide('error', message)
 
