@@ -37,8 +37,11 @@
             <v-card-title>Komentarze</v-card-title>
             <v-card>
               <v-card-title>Wyraź swoją opinię!</v-card-title>
-              <v-text-field label="Tu napisz swoją opinię"></v-text-field>
-              <v-btn @click="postComment()">Wystaw komentarz</v-btn>
+              <v-text-field
+                :model-value="commentContent"
+                label="Tu napisz swoją opinię"
+              ></v-text-field>
+              <v-btn @click="postComment(3.14, commentContent)">Wystaw komentarz</v-btn>
             </v-card>
             <v-card class="mx-auto" v-for="comment in item.data.data.comments" :key="comment.id">
               <v-col>
@@ -61,6 +64,7 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute().params.id
+const commentContent = ref('')
 
 interface Book {
   id: number
