@@ -12,6 +12,7 @@ import { execSync } from 'child_process'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: 'https://j-walega.github.io/BibliothecaClient/',
   plugins: [
     vue({
       template: { transformAssetUrls }
