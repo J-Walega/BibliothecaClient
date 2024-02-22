@@ -1,0 +1,1 @@
+import{_ as e}from"./employee-panel-view.vue_vue_type_script_setup_true_lang-Bsrbfphx.js";import{d as o,v as a,o as n}from"./index-CDAGo256.js";import"./add-book-view.vue_vue_type_script_setup_true_lang-DTrf7PJ2.js";const c=o({__name:"admin-panel-view",setup(r){return(t,_)=>(n(),a(e))}});export{c as default};
