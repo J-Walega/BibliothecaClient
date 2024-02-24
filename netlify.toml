@@ -6,8 +6,4 @@
     from ="/v1/*"
     to = "https://bibliothecamanagerapi.azurewebsites.net/v1"
     force = true
-    headers = {X-From = "Netlify"}
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
+    headers = {Access-Control-Allow-Origin = "*"}
