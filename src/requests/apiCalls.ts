@@ -45,6 +45,26 @@ async function getAllAuthors(token: string) {
   })
 }
 
+async function getAllPublishers(token: string) {
+  return await axios({
+    method: 'get',
+    url: '/v1/publisher',
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  })
+}
+
+async function getAllGenres(token: string) {
+  return await axios({
+    method: 'get',
+    url: '/va/genres',
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  })
+}
+
 async function postNewAuthor(token: string, authorData: any) {
   return await axios({
     method: 'post',
@@ -60,10 +80,10 @@ async function postNewAuthor(token: string, authorData: any) {
   })
 }
 
-async function getUserInfo(token: string, id: string) {
+async function getUserInfo(token: string) {
   return await axios({
     method: 'get',
-    url: `/v1/user/${id}`,
+    url: `/v1/user`,
     headers: {
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json'
@@ -84,13 +104,27 @@ async function getSearchResult(query: string) {
   })
 }
 
+async function getMyBorrows(token: string) {
+  return await axios({
+    method: 'get',
+    url: '/v1/borrows/my',
+    headers: {
+      Authorization: 'Bearer ' + token,
+      'Content-Type': 'application/json'
+    }
+  })
+}
+
 export {
   authorizeUser,
   getAllBooks,
   getBook,
   getAllAuthors,
   postNewAuthor,
+  getAllGenres,
+  getAllPublishers,
   getUserInfo,
   getSearchResult,
-  postNewBook
+  postNewBook,
+  getMyBorrows
 }
