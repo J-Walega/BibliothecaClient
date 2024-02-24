@@ -34,23 +34,7 @@ export default defineConfig({
       Connection: 'Keep-Alive'
     },
     https: generateCerts(),
-    proxy: {
-      // proxy API request to the swagger documentation
-      '/api': {
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-        target: 'https://localhost:5001/swagger'
-      },
-      // proxy API requests to the ASP.NET backend
-      '/v1': {
-        changeOrigin: true,
-        secure: false,
-        followRedirects: true,
-        rewrite: (path) => path.replace(/^\/v1/, ''),
-        target: 'https://localhost:5001/v1'
-      }
-    }
+    proxy: checkEnv()
   }
 })
 
@@ -95,5 +79,43 @@ function generateCerts() {
   return {
     cert: fs.readFileSync(certFilePath, 'utf8'),
     key: fs.readFileSync(keyFilePath, 'utf8')
+  }
+}
+
+function checkEnv() {
+  if (!process.env.PROD) {
+    return {
+      '/api': {
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path: string) => path.replace(/^\/api/, ''),
+        target: 'https://localhost:5001/swagger'
+      },
+      // proxy API requests to the ASP.NET backend
+      '/v1': {
+        changeOrigin: true,
+        secure: false,
+        followRedirects: true,
+        rewrite: (path: string) => path.replace(/^\/v1/, ''),
+        target: 'https://localhost:5001/v1'
+      }
+    }
+  } else {
+    return {
+      '/api': {
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path: string) => path.replace(/^\/api/, ''),
+        target: 'https://bibliothecamanagerapi.azurewebsites.net/swagger/index.html'
+      },
+      // proxy API requests to the ASP.NET backend
+      '/v1': {
+        changeOrigin: true,
+        secure: false,
+        followRedirects: true,
+        rewrite: (path: string) => path.replace(/^\/v1/, ''),
+        target: 'https://bibliothecamanagerapi.azurewebsites.net/v1'
+      }
+    }
   }
 }
