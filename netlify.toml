@@ -3,5 +3,5 @@
     to = "https://bibliothecamanagerapi.azurewebsites.net/swagger"
 
 [[redirects]]
-    from ="/v1/*
+    from ="/v1/*"
     to = "https://bibliothecamanagerapi.azurewebsites.net/v1"
