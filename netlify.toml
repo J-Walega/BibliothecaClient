@@ -5,3 +5,8 @@
 [[redirects]]
     from ="/v1/*"
     to = "https://bibliothecamanagerapi.azurewebsites.net/v1"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
