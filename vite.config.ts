@@ -83,7 +83,7 @@ function generateCerts() {
 }
 
 function checkEnv() {
-  if (!process.env.PROD) {
+  if (process.env.NODE_ENV === `development`) {
     return {
       '/api': {
         changeOrigin: true,
@@ -106,7 +106,7 @@ function checkEnv() {
         changeOrigin: true,
         secure: false,
         rewrite: (path: string) => path.replace(/^\/api/, ''),
-        target: 'https://bibliothecamanagerapi.azurewebsites.net/swagger/index.html'
+        target: 'https://bibliothecamanagerapi.azurewebsites.net/swagger'
       },
       // proxy API requests to the ASP.NET backend
       '/v1': {
