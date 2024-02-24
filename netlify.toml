@@ -5,8 +5,9 @@
 [[redirects]]
     from ="/v1/*"
     to = "https://bibliothecamanagerapi.azurewebsites.net/v1"
-
+    force = true
+    headers = {X-From = "Netlify"}
 [[headers]]
-  for = "/v1/*"
+  for = "/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"

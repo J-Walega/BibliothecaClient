@@ -14,6 +14,10 @@ import { md3 } from 'vuetify/blueprints'
 import App from './App.vue'
 import router from './router/router'
 
+import axios from 'axios'
+
+axios.defaults.headers.common[`Access-Control-Allow-Origin`] = `*`
+
 const vuetify = createVuetify({
   components,
   directives,
