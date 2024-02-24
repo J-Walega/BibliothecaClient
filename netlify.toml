@@ -7,6 +7,6 @@
     to = "https://bibliothecamanagerapi.azurewebsites.net/v1"
 
 [[headers]]
-  for = "/*"
+  for = "/v1/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
