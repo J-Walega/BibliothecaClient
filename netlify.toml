@@ -4,6 +4,6 @@
 
 [[redirects]]
     from ="/v1/*"
-    to = "https://bibliothecamanagerapi.azurewebsites.net/v1"
+    to = "https://bibliothecamanagerapi.azurewebsites.net/v1/"
     force = true
     headers = {Access-Control-Allow-Origin = "*"}
