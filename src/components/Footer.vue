@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <v-card> </v-card>
+  <v-footer></v-footer>
 </template>
 
 <script setup lang="ts"></script>

@@ -16,8 +16,10 @@ import router from './router/router'
 
 import axios from 'axios'
 
+if (process.env.NODE_ENV === 'production') {
+  axios.defaults.baseURL = 'https://bibliothecamanagerapi.azurewebsites.net'
+}
 axios.defaults.headers.common[`Access-Control-Allow-Origin`] = `*`
-axios.defaults.baseURL = 'https://bibliothecamanagerapi.azurewebsites.net'
 
 const vuetify = createVuetify({
   components,

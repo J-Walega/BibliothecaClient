@@ -83,7 +83,7 @@ function generateCerts() {
 }
 
 function checkEnv() {
-  if (process.env.IS_IN_DEV === `development`) {
+  if (process.env.NODE_ENV !== 'production') {
     return {
       '/api': {
         changeOrigin: true,

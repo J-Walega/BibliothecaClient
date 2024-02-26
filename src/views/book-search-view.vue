@@ -26,6 +26,10 @@ interface Book {
   score: number
 }
 
+interface BookItems {
+  id: string
+}
+
 const props = defineProps<{
   book: Book
 }>()

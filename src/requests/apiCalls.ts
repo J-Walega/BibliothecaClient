@@ -48,7 +48,20 @@ async function getAllAuthors(token: string) {
 async function getAllPublishers(token: string) {
   return await axios({
     method: 'get',
-    url: '/v1/publisher',
+    url: '/v1/publishers',
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  })
+}
+
+async function postNewPublisher(token: string, data: any) {
+  return await axios({
+    method: 'post',
+    url: '/v1/publishers',
+    data: {
+      name: data.name
+    },
     headers: {
       Authorization: 'Bearer ' + token
     }
@@ -83,7 +96,7 @@ async function postNewAuthor(token: string, authorData: any) {
 async function getUserInfo(token: string) {
   return await axios({
     method: 'get',
-    url: `/v1/user`,
+    url: `/v1/users`,
     headers: {
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json'
@@ -115,6 +128,60 @@ async function getMyBorrows(token: string) {
   })
 }
 
+async function addUser(token: string, userData: any) {
+  return await axios({
+    method: 'post',
+    url: `/v1/users`,
+    data: {
+      user: {
+        email: userData.email,
+        name: userData.name,
+        surname: userData.surname,
+        city: {
+          name: userData.city.name,
+          region: userData.city.region,
+          postCode: userData.city.postCode
+        },
+        street: userData.street,
+        buildingNumber: userData.buildingNumber,
+        houseNumber: userData.houseNumber,
+        pesel: userData.pesel
+      }
+    },
+    headers: {
+      Authorization: 'Bearer ' + token,
+      'Content-Type': 'application/json'
+    }
+  })
+}
+
+async function addEmployee(token: string, userData: any) {
+  return await axios({
+    method: 'post',
+    url: `/v1/employees`,
+    data: {
+      user: {
+        email: userData.email,
+        name: userData.name,
+        surname: userData.surname,
+        city: {
+          name: userData.city.name,
+          region: userData.city.region,
+          postCode: userData.city.postCode
+        },
+        street: userData.street,
+        buildingNumber: userData.buildingNumber,
+        houseNumber: userData.houseNumber,
+        pesel: userData.pesel
+      }
+    },
+    headers: {
+      Authorization: 'Bearer ' + token,
+      'Content-Type': 'application/json'
+    }
+  })
+}
+
 export {
   authorizeUser,
   getAllBooks,
@@ -123,8 +190,11 @@ export {
   postNewAuthor,
   getAllGenres,
   getAllPublishers,
+  postNewPublisher,
   getUserInfo,
   getSearchResult,
   postNewBook,
-  getMyBorrows
+  getMyBorrows,
+  addUser,
+  addEmployee
 }

@@ -20,9 +20,6 @@
             <MyBorrowsView></MyBorrowsView>
           </Suspense>
         </v-window-item>
-        <v-window-item value="historyOfBorrows">
-          <div class="text-h5">Historia wypożyczeń</div>
-        </v-window-item>
       </v-window>
     </v-card-text>
   </v-card>

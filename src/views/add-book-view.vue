@@ -75,7 +75,8 @@ import {
   getAllPublishers,
   getAllGenres,
   postNewAuthor,
-  postNewBook
+  postNewBook,
+  postNewPublisher
 } from '@/requests/apiCalls'
 import { useAuthStore } from '@/stores/useAuthStore'
 import { ref } from 'vue'
@@ -125,7 +126,7 @@ const authorData: Ref<Author> = ref({ name: '', surname: '' })
 const genreData: Ref<Genre> = ref({ name: '' })
 
 async function postBook(book: Book) {
-  await postNewBook(book)
+  await postNewBook(book).catch((error) => console.log(error))
 }
 
 async function getAuthors() {
@@ -147,6 +148,11 @@ async function getPublishers() {
   let publisher = publishersList.data.data
   popPublisherDialog.value = false
   publishers.value = publisher
+}
+
+async function addPublisher(data: Publisher) {
+  let response = await postNewPublisher(authStore.user.token, data)
+  console.log(response)
 }
 
 async function getGenres() {
