@@ -10,6 +10,7 @@ import '@mdi/font/css/materialdesignicons.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import { md3 } from 'vuetify/blueprints'
+import { VueRecaptchaPlugin } from 'vue-recaptcha'
 
 import App from './App.vue'
 import router from './router/router'
@@ -39,4 +40,9 @@ const vuetify = createVuetify({
 
 const pinia = createPinia()
 
-createApp(App).use(router).use(vuetify).use(pinia).mount('#app')
+createApp(App)
+  .use(VueRecaptchaPlugin, { v3SiteKey: import.meta.env.RECAPTCHA_SITE_KEY })
+  .use(router)
+  .use(vuetify)
+  .use(pinia)
+  .mount('#app')

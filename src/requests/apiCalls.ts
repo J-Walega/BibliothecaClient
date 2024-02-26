@@ -182,6 +182,16 @@ async function addEmployee(token: string, userData: any) {
   })
 }
 
+async function extendBorrow(token: string, borrowId: number) {
+  return await axios({
+    method: 'patch',
+    url: `/v1/borrows/${borrowId}`,
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+}
+
 export {
   authorizeUser,
   getAllBooks,
@@ -196,5 +206,6 @@ export {
   postNewBook,
   getMyBorrows,
   addUser,
-  addEmployee
+  addEmployee,
+  extendBorrow
 }

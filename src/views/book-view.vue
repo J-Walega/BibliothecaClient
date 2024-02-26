@@ -27,15 +27,15 @@
         <v-card-subtitle v-if="!bookItems.data.data">Brak dostępnych egzemplarzy</v-card-subtitle>
         <v-table v-if="bookItems.data.data">
           <thead>
-            <th>Książka</th>
+            <th>Identyfikator egzemplarza</th>
             <th>Status</th>
           </thead>
           <tbody>
             <tr v-for="items in bookItems.data.data" :key="items.id">
               <td>{{ items.id }}</td>
               <td v-if="items.status === 1">Dostępna w bibliotece</td>
-              <td v-if="items.status === 2">Wypożyczona</td>
-              <td v-if="items.status === 3">Obecnie niedostępna dla czytelników</td>
+              <td v-if="items.status === 0">Wypożyczona</td>
+              <td v-if="items.status === 2">Obecnie niedostępna dla czytelników</td>
             </tr>
           </tbody>
         </v-table>
@@ -88,7 +88,7 @@
 
 <script setup lang="ts">
 import { getBook } from '@/requests/apiCalls'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { Comment, PostComment, GetBookComments, DeleteComment } from '@/requests/commentApiCalls'
 import { getBookItems } from '@/requests/bookItemApiCalls'
@@ -125,7 +125,6 @@ async function postComment(data: Comment) {
   const response = await PostComment(authStore.user.token, data).catch((error) =>
     console.log(error)
   )
-  await getComments()
   return response
 }
 

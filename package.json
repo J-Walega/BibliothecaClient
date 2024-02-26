@@ -23,7 +23,7 @@
     "sass": "^1.71.0",
     "vite-plugin-vuetify": "^2.0.1",
     "vue": "^3.4.15",
-    "vue-recaptcha": "^3.0.0-alpha.6",
+    "vue-recaptcha": "^3.0.0-alpha.2",
     "vue-router": "^4.2.5",
     "vuetify": "^3.5.4"
   },
